@@ -1,0 +1,5 @@
+*.gpx 
+GPXData/
+Resources/AccessInformation/accessinformation.py
+Resources/AccessInformation/
+Data/
