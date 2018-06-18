@@ -15,12 +15,29 @@ Now, I have the opportunity to combine my running experiences with analytics in 
 Enjoy!
 
 
-## Directory
+## Directory (Local usage)
 
-* [Data](Data/)
-* [Data Cleaning Script](data-extraction.py)
-* [Resources](Resources/)
-.... to be continued
+* [Analysis](Analysis)
+    * .gitkeep
+    * db
+    * static
+    * templates
+    * app.py
+* Data
+    * JSONData
+* [DataEngineering](DataEngineering)
+    * API-Process
+        * .ipynb_checkpoints
+        * [DataEngineering-SQL.py](DataEngineering/DataEngineering-SQL.py)
+    * GPX-Data-Process
+* GPXData
+* [Resources](Resources)
+    * AccessInformation
+        * accessinformation.py
+    * __pycache__
+    * EnvironmentPackages
+    * Images
+
 
 ## Resources
 
@@ -36,27 +53,5 @@ Enjoy!
 * Flask
 * Pandas
 * GPX type files
-
+* Strava API library 
 ## Requirements
-
-
-## (Local) Folder Directory
-
-* Analysis
-    * .gitkeep
-    * db
-    * static
-    * templates
-* Data
-    * JSONData
-* DataEngineering
-    * API-Process
-        * .ipynb_checkpoints
-    * GPX-Data-Process
-* GPXData
-* Resources
-    * AccessInformation
-    * __pycache__
-    * EnvironmentPackages
-    * Images
-
