@@ -10,6 +10,8 @@ I started running to lose weight, being 260lbs. This idea came to me after gradu
 
 In my first year of running, I completed a Marathon. The two consecutive years thereafter, I ran two half marathons. I had on-and-offs with running, but I still run now, and  it has been great. 
 
+![2017 SF Giants 5k Run](Resources/Images/SFGiants5k.jpg)
+
 Now, I have the opportunity to combine my running experiences with analytics in this project.
 
 Enjoy!
