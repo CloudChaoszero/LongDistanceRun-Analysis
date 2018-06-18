@@ -28,8 +28,10 @@ Enjoy!
 * [DataEngineering](DataEngineering)
     * API-Process
         * .ipynb_checkpoints
-        * [DataEngineering-SQL.py](DataEngineering/DataEngineering-SQL.py)
+        * [DataEngineering-SQL.py](DataEngineering/API-Process/DataEngineering-SQL.py)
+        * [Running-DataJsonManipulation.ipynb](DataEngineering/API-Process/Running-DataJsonManipulation.ipynb)
     * GPX-Data-Process
+        * data-extraction.py
 * GPXData
 * [Resources](Resources)
     * AccessInformation
