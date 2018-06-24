@@ -6,7 +6,7 @@ Evaluating and Visualizing my exercises, for self improvement. My goal is to pro
 
 Here is one example, still under construction:
 
-![2017 SF Giants 5k Run](Resources/Images/FirstDraft-viz.jpg)
+![Mile Coverage Bar Chart](Resources/Images/FirstDraft-Viz.JPG)
 
 ### My Run Journey
 
