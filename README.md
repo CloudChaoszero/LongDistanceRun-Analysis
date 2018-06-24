@@ -4,6 +4,10 @@
 
 Evaluating and Visualizing my exercises, for self improvement. My goal is to provide users insight into my runs through analytics, research, and visualizations. 
 
+Here is one example, still under construction:
+
+![2017 SF Giants 5k Run](Resources/Images/FirstDraft-viz.jpg)
+
 ### My Run Journey
 
 I started running to lose weight, being 260lbs. This idea came to me after graduating high school in 2010...and I noticed I had a lot of time.
