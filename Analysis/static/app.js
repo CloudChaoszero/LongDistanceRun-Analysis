@@ -60,11 +60,10 @@ d3.json("/data",function(error,JSONdata){
                         .rollup(function(d){
                             return d3.max(d, function(g){return g.Distance * 0.000621371;});
                         }).entries(JSONdata);
-    console.log(data);
    data.forEach(function(d){
         d.ActivityID = d.key;
         d.Distance = d.value;
-    })
+    });
 
     var xBandScale = d3.scaleBand()
                     .domain(data.map(d => d.ActivityID))
@@ -89,7 +88,8 @@ d3.json("/data",function(error,JSONdata){
     data.forEach(function(d){
         d.Distance = +d.Distance;
     });
-    chartGroup.selectAll(".bar")
+    
+    var barsGroup = chartGroup.selectAll(".bar")
     .data(data)
     .enter()
     .append("rect")
@@ -102,10 +102,39 @@ d3.json("/data",function(error,JSONdata){
     chartGroup.append("text")
             .attr("text-anchor","middle")
             .attr("transform",`translate(${-50}, ${svgHeight/3})rotate(-90)`)
-            .text("Miles")
+            .text("Miles");
     chartGroup.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
             .attr("transform", "translate("+ (svgWidth/2) +","+(svgHeight-(100/5))+")")  // centre below axis
             .text("Activity ID");
+
+        var toolTip = d3.tip()
+            .attr("class", "tooltip")
+            .offset([0, -60])
+            .html(function(d) {
+              return (`<strong font="white">${d.Distance.toFixed(2)}</strong>`);
+            });
+      
+          // Step 2: Create the tooltip in chartGroup.
+        chartGroup.call(toolTip);
+      
+
+
+    
+    barsGroup.on("mouseover",function(d){
+        d3.select(this)
+            .transition()
+            .duration(1000)
+            .attr("fill","red");
+        toolTip.show(d)
+    })
+    .on("mouseout",function(d){
+        d3.select(this)
+        .transition()
+        .duration(1000)
+        .attr("fill","black");
+        toolTip.hide(d);
+    })
+    
 
 });

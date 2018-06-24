@@ -5,9 +5,19 @@ body {
 }
 
 .bar {
-  fill: orange;
+  fill: black;
 }
 
-.bar:hover {
-  fill: green;
+
+.tooltip {
+  position: absolute;
+  width: 90px;
+  height: 70px;
+  padding: 10px;
+  font: 12px sans-serif;
+  text-align: center;
+  color: white;
+  background: blue;
+  border: 0;
+  border-radius: 10px;
 }
