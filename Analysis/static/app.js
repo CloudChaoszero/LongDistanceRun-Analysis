@@ -80,7 +80,11 @@ d3.json("/data",function(error,JSONdata){
     chartGroup.append("g").call(leftAxis);
     chartGroup.append("g")
     .attr("transform", `translate(0, ${height})`)
-    .call(bottomAxis);
+    .call(bottomAxis)
+    .selectAll("text")
+    .attr("y",0)
+    .attr("x",-50)
+    .attr("transform","rotate(-65)");
 
     data.forEach(function(d){
         d.Distance = +d.Distance;
@@ -94,5 +98,14 @@ d3.json("/data",function(error,JSONdata){
     .attr("height", d => height - yLinearScale(d.Distance))
     .attr("x", (d, i) => xBandScale(d.ActivityID))
     .attr("y", d => yLinearScale(d.Distance));
-    console.log("Test");
+    
+    chartGroup.append("text")
+            .attr("text-anchor","middle")
+            .attr("transform",`translate(${-50}, ${svgHeight/3})rotate(-90)`)
+            .text("Miles")
+    chartGroup.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (svgWidth/2) +","+(svgHeight-(100/5))+")")  // centre below axis
+            .text("Activity ID");
+
 });
