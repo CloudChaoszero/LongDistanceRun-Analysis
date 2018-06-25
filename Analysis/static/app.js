@@ -14,42 +14,23 @@ var height = svgHeight - margin.top - margin.bottom;
 var svg = d3.select("#chart")
             .append("svg")
             .attr("width",svgWidth)
-            .attr("height",svgHeight);
+            .attr("height",svgHeight+5);
 
 var chartGroup = svg.append("g")
-                .attr("transform",`translate(${margin.left},${margin.top})`);
+                .attr("transform",`translate(${margin.left},${margin.top-2})`);
 
 
+var table_parent = d3.select(".table-data")
+var d3table = table_parent.append('table')
+
+thead = d3.select("table").selectAll("th")
+.data(["Activity ID","Distance"]).enter().append("th").text(function(d){return d})
 
 
 d3.json("/data",function(error,JSONdata){
     if(error){
         console.error()
     }
-    // // Working Code
-    // d3.select("#chart")
-    //     .selectAll("p")
-    //     .data(JSONdata)
-    //     .enter()
-    //     .append("p")
-    //     .text(function(d){
-    //         return(d.ActivityID + ", " + d.Distance);
-    //     });
-
-
-    // var data = []
-    // var tempAr1 = []
-    // var tempAr2 = []
-    // tempAr1.push("ActivityID");
-    // tempAr2.push("Distance");
-    // JSONdata.forEach(function(item){
-    //         tempAr1.push(item.ActivityID);
-    //         tempAr2.push(item.Distance);
-    // });
-    // data.push(tempAr1,tempAr2);
-    // data.forEach(function(d){
-    //     d.Distance = +d.Distance;
-    // });
 
 
     var barSpacing = 10;
@@ -87,6 +68,16 @@ d3.json("/data",function(error,JSONdata){
 
     data.forEach(function(d){
         d.Distance = +d.Distance;
+
+
+        //Impute data into table
+        var d3row = d3table.append('tr');
+        var row_a=[];
+        for (key in d){row_a.push(d[key])}
+        row_a.slice(0,2).forEach(function(el){d3row.append('td');});
+        var d3td_hd = d3row.selectAll('td').data(row_a.slice(0,2));
+        
+        d3td_hd.text(function(d){return d;});
     });
     
     var barsGroup = chartGroup.selectAll(".bar")
@@ -99,16 +90,18 @@ d3.json("/data",function(error,JSONdata){
     .attr("x", (d, i) => xBandScale(d.ActivityID))
     .attr("y", d => yLinearScale(d.Distance));
     
+
+    /* X and Y Axis Labels*/
     chartGroup.append("text")
             .attr("text-anchor","middle")
             .attr("transform",`translate(${-50}, ${svgHeight/3})rotate(-90)`)
             .text("Miles");
     chartGroup.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ (svgWidth/2) +","+(svgHeight-(100/5))+")")  // centre below axis
+            .attr("transform", "translate("+ (svgWidth/2) +","+(svgHeight-(100/5)+5)+")")  // centre below axis
             .text("Activity ID");
-
-        var toolTip = d3.tip()
+/*Tooltip*/
+    var toolTip = d3.tip()
             .attr("class", "tooltip")
             .offset([0, -60])
             .html(function(d) {
@@ -136,5 +129,6 @@ d3.json("/data",function(error,JSONdata){
         toolTip.hide(d);
     })
     
+
 
 });
