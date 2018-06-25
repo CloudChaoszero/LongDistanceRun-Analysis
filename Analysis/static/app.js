@@ -67,7 +67,7 @@ d3.json("/data",function(error,JSONdata){
 
     var xBandScale = d3.scaleBand()
                     .domain(data.map(d => d.ActivityID))
-                    .range([0,width])
+                    .range([width,0])
                     .padding(0.1);
     var yLinearScale = d3.scaleLinear()
                     .domain([0,d3.max(data,d=>d.Distance)])
@@ -112,21 +112,21 @@ d3.json("/data",function(error,JSONdata){
             .attr("class", "tooltip")
             .offset([0, -60])
             .html(function(d) {
-              return (`<strong font="white">${d.Distance.toFixed(2)}</strong>`);
+              return (`<strong>Distance:</strong> <font color="blue">${d.Distance.toFixed(2)}</font>`);
             });
-      
-          // Step 2: Create the tooltip in chartGroup.
+
         chartGroup.call(toolTip);
       
 
 
     
     barsGroup.on("mouseover",function(d){
+        toolTip.show(d)
+         .style("opacity", .9);
         d3.select(this)
             .transition()
             .duration(1000)
             .attr("fill","red");
-        toolTip.show(d)
     })
     .on("mouseout",function(d){
         d3.select(this)

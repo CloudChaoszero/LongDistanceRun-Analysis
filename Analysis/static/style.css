@@ -1,0 +1,31 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+#inds{
+	position:absolute;
+	top:5px;
+	left:1px;
+}
+
+.bar {
+  fill: black;
+}
+
+
+ .tooltip.n{
+  display: true;
+  width: 90px;
+  height: 100px;
+  padding: 10px;
+  font: 14px sans-serif;
+  text-align: center;
+  background:grey;
+  color: black;
+  border: 1;
+  opacity: 1;
+  border-radius: 10px;
+}
